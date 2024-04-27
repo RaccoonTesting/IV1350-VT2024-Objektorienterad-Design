@@ -1,0 +1,10 @@
+0 Orange 4.3 10
+1 Eggs 4.9 11
+2 Chicken 55.0 9
+3 Coffee 33 1
+4 Juice 2.2 5
+5 Salad 8.3 2
+6 Tomato 2.3 5
+7 Artichoke 6.4 8
+8 Eggplant 4.2 7
+
