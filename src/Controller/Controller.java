@@ -30,7 +30,7 @@ public class Controller {
         return sale.getRunningTotal();
     }
 
-    public float getDiscount(int customerID){
+    public float getDiscount(int customerId){
         return discount.getDiscount(customerId, sale);
     }
 
