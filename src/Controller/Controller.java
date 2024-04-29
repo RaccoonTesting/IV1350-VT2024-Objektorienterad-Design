@@ -20,19 +20,22 @@ public class Controller {
     }
 
     public void startSale() {
-        sale = new Sale();
+        this.sale = new Sale();
     }
 
-    public void addItem(int quantity, int itemID){}
-        //Add to sale
+    public void addItem(int quantity, String itemID){
+        ItemDTO item = 
+        this.sale.addToSale(quantity, item);
+    }
 
     public float endSale(){
         return sale.getRunningTotal();
     }
 
+    /* 
     public float getDiscount(int customerId){
         return discount.getDiscount(customerId, sale);
-    }
+    }*/
 
     public void getChange(){
         //getChange somehow? Should have return value

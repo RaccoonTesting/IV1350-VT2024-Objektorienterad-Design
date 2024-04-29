@@ -14,13 +14,13 @@ public class ExternalInventorySystem {
 
     public ExternalInventorySystem() {
         try {
-            File inventory = new File("Integration/inventoryItems.txt");
+            File inventory = new File("src/Integration/Inventory.txt");
             Scanner scanner = new Scanner(inventory);
             String[] info;
-            int i = 0;
             while (scanner.hasNextLine()) {
-                info = scanner.nextLine().split(" ");
-                itemDTO = new ItemDTO(Integer.parseInt(info[0]), info[1], Float.parseFloat(info[2]), Float.parseFloat(info[3]));
+                info = scanner.nextLine().split(",");
+
+                itemDTO = new ItemDTO(Integer.parseInt(info[0]), info[1], Float.parseFloat(info[2]), Float.parseFloat(info[3]), info[4]);
                 inventoryItems.add(itemDTO);
             }
         } catch (FileNotFoundException ex) {
@@ -35,13 +35,13 @@ public class ExternalInventorySystem {
         //push changes to External inventory system
     }
 
-    public ItemDTO getItem(int ItemID) {
+    public ItemDTO getItem(String ItemID) {
         //Extract item information from external inventory system with provided ID
         //Return THIS item
         return inventoryItems.get(ItemID);
     }
-}
-    /*
+
+    
     public static void main(String args[]) {
         ExternalInventorySystem ex = new ExternalInventorySystem();
         System.out.println(ex.getItem(0).getName());
@@ -50,4 +50,5 @@ public class ExternalInventorySystem {
         System.out.println(ex.getItem(3).getName());
         System.out.println(ex.getItem(4).getName());
 
-    }*/
+    }
+}
