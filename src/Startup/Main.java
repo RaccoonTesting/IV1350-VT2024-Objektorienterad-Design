@@ -13,5 +13,8 @@ public class Main {
         Printer printer = new Printer();
         Controller controller = new Controller(accountingSystem, inventorySystem, printer, discount);
         View view = new View(controller);
+        controller.startSale();
+        controller.addItem(1, "3");
+        System.out.println(controller.endSale());
     }
 }

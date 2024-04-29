@@ -3,10 +3,11 @@ import Integration.ItemDTO;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+
 public class Sale {
     private float runningTotal;
     private ArrayList<ItemDTO> items;
-    LocalDateTime time;
+    private LocalDateTime time;
 
     public Sale(){
         this.runningTotal = 0;
@@ -15,10 +16,13 @@ public class Sale {
     }
 
     public void addToSale(ItemDTO item, int quantity){
+        for(int i = 0; i < quantity; i++)items.add(item);
         this.runningTotal += item.getPrice() * (1 + item.getVAT()) * quantity;
     }
 
     public float getRunningTotal(){
         return runningTotal;
     }
+
+    
 }

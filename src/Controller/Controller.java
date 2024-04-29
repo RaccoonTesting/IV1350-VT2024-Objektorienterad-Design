@@ -24,8 +24,8 @@ public class Controller {
     }
 
     public void addItem(int quantity, String itemID){
-        ItemDTO item = 
-        this.sale.addToSale(quantity, item);
+        ItemDTO item = inventorySystem.getItem(itemID);
+        this.sale.addToSale(item, quantity);
     }
 
     public float endSale(){
@@ -40,6 +40,7 @@ public class Controller {
     public void getChange(){
         //getChange somehow? Should have return value
     }
+
 
 
 
