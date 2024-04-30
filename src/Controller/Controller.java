@@ -29,6 +29,7 @@ public class Controller {
     }
 
     public float endSale(){
+        inventorySystem.updateInventory(sale.getItems());
         return sale.getRunningTotal();
     }
 

@@ -24,5 +24,9 @@ public class Sale {
         return runningTotal;
     }
 
+    public ArrayList<ItemDTO> getItems(){
+        return this.items;
+    }
+
     
 }
