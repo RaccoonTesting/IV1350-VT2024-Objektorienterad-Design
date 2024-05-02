@@ -2,6 +2,7 @@ package Controller;
 
 import Model.*;
 import Integration.*;
+import java.util.Scanner;
 
 public class Controller {
 
@@ -31,12 +32,14 @@ public class Controller {
         // Add item to this sale with the quantity
         ItemDTO item = inventorySystem.getItem(itemID);
         this.sale.addToSale(item, quantity);
+        printer.printItem(item, sale.getRunningTotal());
     }
 
-    public float endSale(){
-        //Updating the inventorySystem and returning the Running total of this sale
+    public void endSale(){
         inventorySystem.updateInventory(sale.getItems());
-        return sale.getRunningTotal();
+        printer.printEnd(sale.getRunningTotal());
+        Scanner in = new Scanner(System.in);
+        printer.printChange(getChange(in.nextFloat(), sale.getRunningTotal()));
     }
 
     /* 
@@ -44,8 +47,9 @@ public class Controller {
         return discount.getDiscount(customerId, sale);
     }*/
 
-    public void getChange(){
+    private float getChange(float cash, float total){
         //getChange somehow? Should have return value
+        return cash - total;
     }
 
 

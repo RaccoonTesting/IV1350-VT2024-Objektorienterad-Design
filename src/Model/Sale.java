@@ -23,7 +23,7 @@ public class Sale {
         // We get an Item DTO and the quantity from the controller
         // Adding the items multiple times to the sale depending on the quantity
         for(int i = 0; i < quantity; i++)items.add(item);
-        this.runningTotal += item.getPrice() * (1 + item.getVAT()) * quantity;
+        this.runningTotal += item.getPrice() * (1 + (item.getVAT()/100)) * quantity;
     }
 
     //Returning running total of the sale
