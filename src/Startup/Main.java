@@ -18,6 +18,8 @@ public class Main {
         View view = new View(controller);
         controller.startSale();
         controller.addItem(2, "3");
+        controller.addItem(4, "5");
+
         controller.endSale();
     }
 }

@@ -1,7 +1,10 @@
 package Integration;
 
+import java.util.ArrayList;
+
 public class ExternalAccountingSystem {
     public ExternalAccountingSystem(){}
-    public void sendToAccounting(ItemDTO sale){
+    //Receives information on sale, sends to accounting
+    public void sendToAccounting(ArrayList<ItemDTO> sale){
     }
 }
