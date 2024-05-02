@@ -48,7 +48,6 @@ public class Controller {
     }*/
 
     private float getChange(float cash, float total){
-        //getChange somehow? Should have return value
         return cash - total;
     }
 
