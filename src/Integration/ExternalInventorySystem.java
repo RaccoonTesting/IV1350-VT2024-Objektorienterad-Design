@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.HashMap;
 
-import Integration.ItemDTO;
+//import Integration.ItemDTO;
 
 public class ExternalInventorySystem {
     private ItemDTO itemDTO;
@@ -15,6 +15,9 @@ public class ExternalInventorySystem {
     private HashMap<ItemDTO, Integer> inventory = new HashMap<>();
 
     public ExternalInventorySystem() {
+        // Scans in text file with items that are in the "database"
+        // Parsing the all the items and information into the Item DTO creating an Array list with all items
+        // Also creates a Hash map for the Inventory
         try {
             File inventoryFile = new File("src/Integration/Inventory.txt");
             Scanner scanner = new Scanner(inventoryFile);
@@ -46,8 +49,8 @@ public class ExternalInventorySystem {
     }
 
     public ItemDTO getItem(String itemID) {
-        //Extract item information from external inventory system with provided ID
-        //Return THIS item
+        // Get item information from external inventory system with Item ID
+        // Returns current item
             ItemDTO item = null;
            
             for(ItemDTO i : this.inventoryItems){ 
@@ -57,13 +60,7 @@ public class ExternalInventorySystem {
 
             }
             return item;
-
-            
-           
-            
-        
     }
-
     
     public static void main(String args[]) {
         ExternalInventorySystem ex = new ExternalInventorySystem();
