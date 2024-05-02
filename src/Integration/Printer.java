@@ -25,4 +25,6 @@ public class Printer {
     public void printChange(float change){
         System.out.println("Change to customer: " + change + " SEK");
     }
+
+    //public void printReciept()
 }
