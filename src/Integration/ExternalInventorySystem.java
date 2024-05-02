@@ -28,6 +28,7 @@ public class ExternalInventorySystem {
             for(ItemDTO item : inventoryItems){
                 inventory.put(item, 10);
             }
+            scanner.close();
         } catch (FileNotFoundException ex) {
             System.out.println("An error occurred.");
             ex.printStackTrace();

@@ -17,7 +17,7 @@ public class Sale {
 
     public void addToSale(ItemDTO item, int quantity){
         for(int i = 0; i < quantity; i++)items.add(item);
-        this.runningTotal += item.getPrice() * (1 + item.getVAT()) * quantity;
+        this.runningTotal += item.getPrice() * (1 + (item.getVAT()/100)) * quantity;
     }
 
     public float getRunningTotal(){
