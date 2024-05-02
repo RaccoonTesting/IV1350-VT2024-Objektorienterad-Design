@@ -36,10 +36,11 @@ public class Controller {
     }
 
     public void endSale(){
-        inventorySystem.updateInventory(sale.getItems());
+        inventorySystem.updateInventory(sale.getItems());   
         printer.printEnd(sale.getRunningTotal());
         Scanner in = new Scanner(System.in);
         printer.printChange(getChange(in.nextFloat(), sale.getRunningTotal()));
+        //printer.printReciept(sale.getItems(), sale.getTime(), sale.getRunningTotal());
     }
 
     /* 

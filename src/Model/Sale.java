@@ -36,5 +36,9 @@ public class Sale {
         return this.items;
     }
 
+    public LocalDateTime getTime(){
+        return this.time;
+    }
+
     
 }
