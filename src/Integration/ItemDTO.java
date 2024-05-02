@@ -8,12 +8,15 @@ public class ItemDTO {
     private String description;
 
     public ItemDTO(String itemID, String itemName, float itemPrice, float itemVAT, String description ) {
+        // Constructor for Items
         this.itemID = itemID;
         this.itemName = itemName;
         this.itemPrice = itemPrice;
         this.itemVAT = itemVAT;
         this.description = description;
     }
+
+    //Getters for Item information
     public String getItemID(){
         return this.itemID;
     }
