@@ -35,12 +35,7 @@ public class Controller {
         printer.printItem(item, sale.getRunningTotal());
     }
 
-<<<<<<< HEAD
     public void endSale(){
-=======
-    public float endSale(){
-        //Updating the inventorySystem and returning the Running total of this sale
->>>>>>> 2b5ae7492e672f7d85b9d4509a882d69f9d3da63
         inventorySystem.updateInventory(sale.getItems());
         printer.printEnd(sale.getRunningTotal());
         Scanner in = new Scanner(System.in);
