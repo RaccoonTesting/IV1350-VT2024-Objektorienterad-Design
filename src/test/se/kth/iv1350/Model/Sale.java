@@ -1,5 +1,5 @@
-package Model;
-import Integration.ItemDTO;
+package test.se.kth.iv1350.Model;
+import test.se.kth.iv1350.Integration.ItemDTO;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 

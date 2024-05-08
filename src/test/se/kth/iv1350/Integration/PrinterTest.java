@@ -1,4 +1,4 @@
-package Integration;
+package test.se.kth.iv1350.Integration;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;

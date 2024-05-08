@@ -1,4 +1,4 @@
-package Integration;
+package test.se.kth.iv1350.Integration;
 
 public class ItemDTO {
     private String itemID;

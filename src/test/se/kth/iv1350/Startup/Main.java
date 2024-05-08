@@ -1,8 +1,8 @@
-package Startup;
+package test.se.kth.iv1350.Startup;
 
-import Controller.Controller;
-import Integration.*;
-import View.View;
+import test.se.kth.iv1350.Integration.*;
+import test.se.kth.iv1350.View.View;
+import test.se.kth.iv1350.Controller.Controller;
 
 
 public class Main {
@@ -14,7 +14,7 @@ public class Main {
         ExternalAccountingSystem accountingSystem = new ExternalAccountingSystem();
         ExternalInventorySystem inventorySystem = new ExternalInventorySystem();
         Printer printer = new Printer();
-        Controller controller = new Controller(accountingSystem, inventorySystem, printer, discount);
+        test.se.kth.iv1350.Controller.Controller controller = new Controller(accountingSystem, inventorySystem, printer, discount);
         View view = new View(controller);
         controller.startSale();
         controller.addItem(2, "3");

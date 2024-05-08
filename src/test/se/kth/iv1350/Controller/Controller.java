@@ -1,7 +1,7 @@
-package Controller;
+package test.se.kth.iv1350.Controller;
 
-import Model.*;
-import Integration.*;
+import test.se.kth.iv1350.Model.*;
+import test.se.kth.iv1350.Integration.*;
 import java.util.Scanner;
 
 public class Controller {

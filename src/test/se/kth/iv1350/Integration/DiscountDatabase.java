@@ -1,6 +1,6 @@
-package Integration;
+package test.se.kth.iv1350.Integration;
 
-import Model.Sale;
+import test.se.kth.iv1350.Model.Sale;
 
 /* Will be expanded on in the next seminar
 

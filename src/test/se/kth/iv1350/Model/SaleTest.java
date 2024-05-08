@@ -1,4 +1,4 @@
-package Model;
+package test.se.kth.iv1350.Model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -10,7 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import Integration.ItemDTO;
+import test.se.kth.iv1350.Integration.ItemDTO;
 
 public class SaleTest {
     private Sale sale = null;

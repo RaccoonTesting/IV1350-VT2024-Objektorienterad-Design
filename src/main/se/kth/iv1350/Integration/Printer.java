@@ -1,5 +1,5 @@
-package Integration;
-import Integration.ItemDTO;
+package main.se.kth.iv1350.Integration;
+import main.se.kth.iv1350.Integration.ItemDTO;
 
 public class Printer {
     private String reciept;
