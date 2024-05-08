@@ -7,7 +7,8 @@ public class Printer {
     public Printer(){
 
     }
-    // Print DTO for each item added
+    /* Print DTO for each item added
+     */
     public void printItem(ItemDTO item, float total){
         System.out.println("Item ID: " + item.getItemID());
         System.out.println("Item name: " + item.getName());
@@ -17,16 +18,20 @@ public class Printer {
         System.out.println("total: " + total + " SEK");
     }
 
-    //Printing total cost
+    /*Printing total cost
+     */
     public void printEnd(float total){
         System.out.println("End sale");
         System.out.println("Total cost(including VAT): " + total + " SEK");
     }
 
-    //Prints change that should be given to the customer
+    /*Prints change that should be given to the customer
+     */
     public void printChange(float change){
         System.out.println("Change to customer: " + change + " SEK");
     }
 
-    //public void printReciept()
+    /*public void printReciept()
+
+     */
 }

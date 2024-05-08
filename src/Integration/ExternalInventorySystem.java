@@ -13,9 +13,10 @@ public class ExternalInventorySystem {
     private List<ItemDTO> inventoryItems = new ArrayList<>();
     private HashMap<ItemDTO, Integer> inventory = new HashMap<>();
 
-    // Scans in text file with items that are in the "database"
-    // Parsing the all the items and information into the Item DTO creating an Array list with all items
-    // Also creates a Hash map for the Inventory
+    /* Scans in text file with items that are in the "database"
+    Parsing the all the items and information into the Item DTO creating an Array list with all items
+    Also creates a Hash map for the Inventory
+    */
     public ExternalInventorySystem() {
         try {
             File inventoryFile = new File("src/Integration/Inventory.txt");
@@ -37,9 +38,10 @@ public class ExternalInventorySystem {
         }
     }
 
-    //get items from External inventory system regarding provided list
-    //count quantity of each item in provided list
-    //push changes to External inventory system
+    /*get items from External inventory system regarding provided list
+    count quantity of each item in provided list
+    push changes to External inventory system
+     */
     public void updateInventory(List<ItemDTO> items) {
         for (ItemDTO item : items) {
             int quantity = inventory.get(item);
@@ -48,8 +50,9 @@ public class ExternalInventorySystem {
 
     }
 
-    // Get item information from external inventory system with Item ID
-    // Returns current item
+    /*Get item information from external inventory system with Item ID
+    Returns current item
+     */
     public ItemDTO getItem(String itemID) {
         ItemDTO item = null;
 
