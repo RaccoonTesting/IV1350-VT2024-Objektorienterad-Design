@@ -41,6 +41,16 @@ public class ItemDTO {
         return this.description;
     }
 
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Item ID: " + this.getItemID() + "\n");
+        stringBuilder.append("Item name: " + this.getName() + "\n");
+        stringBuilder.append("Item cost: " + this.getPrice() + " SEK\n");
+        stringBuilder.append("Vat: " + this.getVAT() + " %\n");
+        stringBuilder.append("Item description: " + this.getDescription() + "\n");
+        return stringBuilder.toString();
+    }
+
 
     }
 

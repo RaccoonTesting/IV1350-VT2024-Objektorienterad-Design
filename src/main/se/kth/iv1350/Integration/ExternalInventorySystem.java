@@ -7,7 +7,6 @@ import java.util.HashMap;
 
 
 public class ExternalInventorySystem {
-    private ItemDTO itemDTO;
     private HashMap<ItemDTO, Integer> inventory = new HashMap<>();
 
     /**
@@ -20,6 +19,7 @@ public class ExternalInventorySystem {
             File inventoryFile = new File("src/main/se/kth/iv1350/Integration/Inventory.txt");
             Scanner scanner = new Scanner(inventoryFile);
             String[] info;
+            ItemDTO itemDTO;
             while (scanner.hasNextLine()) {
                 info = scanner.nextLine().split(",");
 
@@ -52,15 +52,14 @@ public class ExternalInventorySystem {
      * Get item information from external inventory system with Item ID
      * Returns current item
      */
-    public ItemDTO getItem(String itemID) {
-        ItemDTO item = null;
-
+    public ItemDTO getItem(String itemID) throws ItemIDNotFoundException{
         for (ItemDTO i : this.inventory.keySet()) {
-            if (i.getItemID().equals(itemID)) {
-                item = i;
+            if (i.getItemID().equals(itemID))return i;
             }
-        }
-        return item;
+            
+            throw new ItemIDNotFoundException(itemID);
+            // TODO: handle exception
+        
     }
 }
     /*

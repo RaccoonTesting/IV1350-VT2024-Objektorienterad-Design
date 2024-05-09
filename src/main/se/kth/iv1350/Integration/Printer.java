@@ -11,11 +11,7 @@ public class Printer {
      *  Print DTO for each item added
      */
     public void printItem(ItemDTO item, float total){
-        System.out.println("Item ID: " + item.getItemID());
-        System.out.println("Item name: " + item.getName());
-        System.out.println("Item cost: " + item.getPrice() + " SEK");
-        System.out.println("Vat: " + item.getVAT() + " %");
-        System.out.println("Item description: " + item.getDescription());
+        
         System.out.println("total: " + total + " SEK");
     }
 

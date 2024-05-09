@@ -9,10 +9,19 @@ public class View {
 
 
             controller.startSale();
-            controller.addItem(2, "3");
-            controller.addItem(4, "5");
+            scanItem(2, "3");
+            scanItem(4, "a");
     
             controller.endSale();
+        }
+
+        private void scanItem(int quantity, String itemID){
+            try {
+                controller.addItem(quantity, itemID);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                // TODO: handle exception
+            }
         }
 
     }

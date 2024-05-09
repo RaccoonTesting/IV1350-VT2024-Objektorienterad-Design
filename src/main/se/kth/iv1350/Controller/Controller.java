@@ -33,8 +33,9 @@ public class Controller {
      * ItemID is scanned and quantity is added by the cashier.
      * Get the item from the inventory system using ItemID
      * Add item to this sale with the quantity
+     * @throws ItemIDNotFoundException 
      * */
-    public void addItem(int quantity, String itemID){
+    public void addItem(int quantity, String itemID) throws ItemIDNotFoundException{
         ItemDTO item = inventorySystem.getItem(itemID);
         this.sale.addToSale(item, quantity);
         printer.printItem(item, sale.getRunningTotal());
