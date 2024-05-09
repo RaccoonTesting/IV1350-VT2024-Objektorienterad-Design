@@ -8,7 +8,8 @@ public class ItemDTO {
     private String description;
 
     public ItemDTO(String itemID, String itemName, float itemPrice, float itemVAT, String description ) {
-        /* Constructor for Items
+        /**
+         *  Constructor for Items
          */
         this.itemID = itemID;
         this.itemName = itemName;
@@ -17,7 +18,8 @@ public class ItemDTO {
         this.description = description;
     }
 
-    /*Getters for Item information
+    /**
+     * Getters for Item information
      */
     public String getItemID(){
         return this.itemID;

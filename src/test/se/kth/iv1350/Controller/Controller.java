@@ -12,14 +12,18 @@ public class Controller {
     private DiscountDatabase discount;
     private Sale sale;
 
-    /*Instances for controller*/
+    /**
+     * Instances for controller
+     */
     public Controller(ExternalAccountingSystem accountingSystem, ExternalInventorySystem inventorySystem, Printer printer,DiscountDatabase discount) {
         this.accountingSystem = accountingSystem;
         this.inventorySystem = inventorySystem;
         this.printer = printer;
         this.discount = discount;
     }
-    /*New sale is started*/
+    /**
+     * New sale is started
+     **/
     public void startSale() {
         this.sale = new Sale();
     }
@@ -33,10 +37,11 @@ public class Controller {
         printer.printItem(item, sale.getRunningTotal());
     }
 
-    /*Updating inventory system
-    Sends information to Accounting system
-    Sending info to Printer
-    Asks for payment
+    /**
+     * Updating inventory system
+     * Sends information to Accounting system
+     * Sending info to Printer
+     * Asks for payment
      */
     public void endSale(){
         inventorySystem.updateInventory(sale.getItems());
