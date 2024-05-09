@@ -6,6 +6,14 @@ public class View {
       Controller controller;
         public View(Controller controller){
             this.controller = controller;
+
+
+            controller.startSale();
+            controller.addItem(2, "3");
+            controller.addItem(4, "5");
+    
+            controller.endSale();
         }
+
     }
 

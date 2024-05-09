@@ -18,10 +18,6 @@ public class Main {
         Printer printer = new Printer();
         Controller controller = new Controller(accountingSystem, inventorySystem, printer, discount);
         View view = new View(controller);
-        controller.startSale();
-        controller.addItem(2, "3");
-        controller.addItem(4, "5");
-
-        controller.endSale();
+       
     }
 }

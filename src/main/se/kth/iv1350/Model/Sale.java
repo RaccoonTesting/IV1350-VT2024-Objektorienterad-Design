@@ -1,25 +1,27 @@
 package main.se.kth.iv1350.Model;
 import main.se.kth.iv1350.Integration.ItemDTO;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class Sale {
     private float runningTotal;
-    private ArrayList<ItemDTO> items;
+    private HashMap<ItemDTO, Integer> quantities;
     private LocalDateTime time;
 
     public Sale(){
         this.runningTotal = 0;
         this.time = LocalDateTime.now();
-        this.items = new ArrayList<ItemDTO>();
+        this.quantities = new HashMap<ItemDTO, Integer>();
     }
     /**
      *  We get an Item DTO and the quantity from the controller
      *  Adding the items multiple times to the sale depending on the quantity
      */
     public void addToSale(ItemDTO item, int quantity){
-        for(int i = 0; i < quantity; i++)items.add(item);
+        Integer currentQuantity = this.quantities.get(item);
+        if(currentQuantity == null)this.quantities.put(item, quantity);
+        else this.quantities.put(item, currentQuantity + quantity);
         this.runningTotal += item.getPrice() * (1 + (item.getVAT()/100)) * quantity;
     }
 
@@ -30,11 +32,9 @@ public class Sale {
         return runningTotal;
     }
 
-    /**
-     * Returns Array list with all current items
-     */
-    public ArrayList<ItemDTO> getItems(){
-        return this.items;
+
+    public HashMap<ItemDTO, Integer> getQuantities() {
+        return quantities;
     }
 
     /**

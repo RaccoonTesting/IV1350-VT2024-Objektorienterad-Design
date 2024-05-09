@@ -47,8 +47,8 @@ public class Controller {
      * Asks for payment
      */
     public void endSale(){
-        inventorySystem.updateInventory(sale.getItems());
-        accountingSystem.sendToAccounting(sale.getItems());
+        inventorySystem.updateInventory(sale.getQuantities());
+        accountingSystem.sendToAccounting(sale.getQuantities());
         printer.printEnd(sale.getRunningTotal());
         Scanner in = new Scanner(System.in);
         printer.printChange(getChange(in.nextFloat(), sale.getRunningTotal()));
