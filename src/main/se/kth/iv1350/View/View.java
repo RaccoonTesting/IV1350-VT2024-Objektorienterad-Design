@@ -8,8 +8,11 @@ import main.se.kth.iv1350.Integration.ItemDTO;
 public class View {
       Controller controller;
       Scanner in = new Scanner(System.in);
+
         public View(Controller controller){
             this.controller = controller;
+            controller.addTotalRevenueObserver(new TotalRevenueView());
+
             while(true) takeInput();
         }
 
