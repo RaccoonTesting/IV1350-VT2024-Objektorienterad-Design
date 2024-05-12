@@ -3,7 +3,9 @@ package main.se.kth.iv1350.View;
 import java.util.Scanner;
 
 import main.se.kth.iv1350.Controller.Controller;
+import main.se.kth.iv1350.Integration.DataBaseNotFoundException;
 import main.se.kth.iv1350.Integration.ItemDTO;
+import main.se.kth.iv1350.Integration.ItemIDNotFoundException;
 
 public class View {
       Controller controller;
@@ -46,9 +48,11 @@ public class View {
                 ItemDTO item = controller.addItem(quantity, itemID);
                 System.out.println(item.toString());
                 System.out.println("Total: " + controller.getRunningTotal());
-            } catch (Exception e) {
+            } catch (ItemIDNotFoundException e) {
                 System.out.println(e.getMessage());
                 // TODO: handle exception
+            } catch (DataBaseNotFoundException e){
+                System.out.println("Internal error");
             }
         }
 

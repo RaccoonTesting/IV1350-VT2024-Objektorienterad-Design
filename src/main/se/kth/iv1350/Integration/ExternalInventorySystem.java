@@ -51,13 +51,17 @@ public class ExternalInventorySystem {
     /**
      * Get item information from external inventory system with Item ID
      * Returns current item
+     * @throws DataBaseNotFoundException 
      */
-    public ItemDTO getItem(String itemID) throws ItemIDNotFoundException{
+    public ItemDTO getItem(String itemID) throws ItemIDNotFoundException, DataBaseNotFoundException{
+        if(itemID.equals("dead_server")){
+            throw new DataBaseNotFoundException();
+        }
         for (ItemDTO i : this.inventory.keySet()) {
             if (i.getItemID().equals(itemID))return i;
             }
             
-            throw new ItemIDNotFoundException(itemID);
+        throw new ItemIDNotFoundException(itemID);
             // TODO: handle exception
         
     }

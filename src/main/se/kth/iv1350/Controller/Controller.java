@@ -37,14 +37,19 @@ public class Controller {
      * @throws ItemIDNotFoundException 
      * */
     public ItemDTO addItem(int quantity, String itemID) throws ItemIDNotFoundException, DataBaseNotFoundException{
-        
-        if(itemID == "dead_server"){
-            throw new DataBaseNotFoundException();
+        try {
+            ItemDTO item;
+            item = inventorySystem.getItem(itemID);
+            this.sale.addToSale(item, quantity);
+            return item;
+        } catch (ItemIDNotFoundException e) {
+            // TODO Auto-generated catch block
+            throw e;
+        } catch (DataBaseNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw e;
         }
-        
-        ItemDTO item = inventorySystem.getItem(itemID);
-        this.sale.addToSale(item, quantity);
-        return item;
     }
 
     /**
