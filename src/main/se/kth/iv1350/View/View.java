@@ -10,6 +10,10 @@ public class View {
       Scanner in = new Scanner(System.in);
         public View(Controller controller){
             this.controller = controller;
+            System.out.println("Welcome to Daniel and Johannas Store!");
+            System.out.println("Use [start] to start new sale");
+            System.out.println("Use [scan quantity itemID] to scan an item");
+            System.out.println("Use [end] to end the sale and go to payment");
             while(true) takeInput();
         }
 
@@ -18,6 +22,7 @@ public class View {
             switch (input[0]) {
                 case "start":
                     controller.startSale();
+                    System.out.println("Sale started");
                     break;
                 
                 case "scan":
@@ -36,7 +41,8 @@ public class View {
         private void scanItem(int quantity, String itemID){
             try {
                 ItemDTO item = controller.addItem(quantity, itemID);
-                System.out.println(itemID.toString());
+                System.out.println(item.toString());
+                System.out.println("Total: " + controller.getRunningTotal());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
                 // TODO: handle exception
@@ -45,13 +51,12 @@ public class View {
 
         private void endSale(){
             float sum = controller.getRunningTotal();
-            System.out.println("Total cost: " + sum);
+            System.out.println("Total cost: " + sum + " SEK");
             System.out.println("Paid in cash: ");
-            Scanner in = new Scanner(System.in);
             float paid = in.nextFloat();
-            System.out.println(controller.pay(paid));
+            controller.pay(paid);
             controller.sendToExternalSystems();
-            in.close();
+            System.out.println("Sale ended");
         }
 
 

@@ -8,6 +8,7 @@ public class Sale {
     private float runningTotal;
     private HashMap<ItemDTO, Integer> quantities;
     private LocalDateTime time;
+    private float paid;
 
     public Sale(){
         this.runningTotal = 0;
@@ -38,6 +39,7 @@ public class Sale {
     }
 
     public float getChange(float cash){
+        this.paid = cash;
         return cash - this.runningTotal;
     }
 
@@ -46,6 +48,18 @@ public class Sale {
      */
     public LocalDateTime getTime(){
         return this.time;
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder("--------------------\n");
+        stringBuilder.append("Time of sale: " + this.getTime() + "\n");
+        for(ItemDTO item : quantities.keySet()) stringBuilder.append(item.toString() + "\n\n");
+        stringBuilder.append("Total cost(including VAT): " + getRunningTotal() + "\n");
+        stringBuilder.append("Paid by customer: " + this.paid + " SEK\n");
+        stringBuilder.append("Change to customer: " + getChange(paid) + " SEK\n");
+        stringBuilder.append("--------------------\n");
+        return stringBuilder.toString();
     }
 
     

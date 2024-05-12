@@ -43,7 +43,7 @@ public class ItemDTO {
 
     @Override
     public String toString(){
-        return "Item ID: " + this.getItemID() + "\nItem name: " + this.getName() + "\nItem cost: " + this.getPrice() + " SEK\nVat: " + this.getVAT() + " %\nItem description: " + this.getDescription() + "\n";
+        return "Item ID: " + this.getItemID() + "\nItem name: " + this.getName() + "\nItem cost: " + this.getPrice() + " SEK\nVat: " + this.getVAT() + " %\nItem description: " + this.getDescription();
     }
 
 
