@@ -8,12 +8,15 @@ import main.se.kth.iv1350.Integration.ItemDTO;
 public class View {
       Controller controller;
       Scanner in = new Scanner(System.in);
+
         public View(Controller controller){
             this.controller = controller;
             System.out.println("Welcome to Daniel and Johannas Store!");
             System.out.println("Use [start] to start new sale");
             System.out.println("Use [scan quantity itemID] to scan an item");
             System.out.println("Use [end] to end the sale and go to payment");
+            controller.addTotalRevenueObserver(new TotalRevenueView());
+
             while(true) takeInput();
         }
 

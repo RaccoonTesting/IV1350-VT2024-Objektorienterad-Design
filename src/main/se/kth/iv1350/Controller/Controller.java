@@ -2,13 +2,17 @@ package main.se.kth.iv1350.Controller;
 
 import main.se.kth.iv1350.Model.*;
 import main.se.kth.iv1350.Integration.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Controller {
 
     private ExternalAccountingSystem accountingSystem;
     private ExternalInventorySystem inventorySystem;
     private Printer printer;
     private Sale sale;
-
+    private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
     /**
      * Instances for controller
      */
@@ -23,6 +27,7 @@ public class Controller {
      */
     public void startSale() {
         this.sale = new Sale();
+        sale.addAlltotalRevenueObservers(totalRevenueObservers);
     }
 
     /**
@@ -52,6 +57,7 @@ public class Controller {
         inventorySystem.updateInventory(sale.getQuantities());
         accountingSystem.sendToAccounting(sale.getQuantities());
         //printer.printReciept(sale.getItems(), sale.getTime(), sale.getRunningTotal());
+        sale.notifyObservers();
     }
 
     public void pay(float cash){
@@ -63,6 +69,10 @@ public class Controller {
     public float getRunningTotal(){
         return sale.getRunningTotal();
     }
+    public void addTotalRevenueObserver(TotalRevenueObserver observerToGetAdded) {
+        totalRevenueObservers.add(observerToGetAdded);
+    }
+
 
 
     /* 
