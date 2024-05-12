@@ -52,14 +52,14 @@ public class Sale {
 
     @Override
     public String toString(){
-        StringBuilder stringBuilder = new StringBuilder("--------------------\n");
+        StringBuilder stringBuilder = new StringBuilder("---------------------------------\n");
         stringBuilder.append("Time of sale: " + this.getTime() + "\n");
         for(ItemDTO item : quantities.keySet()) 
             stringBuilder.append(quantities.get(item) + " st\n" + item.toString() + "\n\n");
         stringBuilder.append("Total cost(including VAT): " + getRunningTotal() + "\n");
         stringBuilder.append("Paid by customer: " + this.paid + " SEK\n");
         stringBuilder.append("Change to customer: " + getChange(paid) + " SEK\n");
-        stringBuilder.append("--------------------\n");
+        stringBuilder.append("---------------------------------\n");
         return stringBuilder.toString();
     }
 
