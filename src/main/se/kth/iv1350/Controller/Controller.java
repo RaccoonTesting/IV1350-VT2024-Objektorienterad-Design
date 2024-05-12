@@ -2,24 +2,20 @@ package main.se.kth.iv1350.Controller;
 
 import main.se.kth.iv1350.Model.*;
 import main.se.kth.iv1350.Integration.*;
-import java.util.Scanner;
-
 public class Controller {
 
     private ExternalAccountingSystem accountingSystem;
     private ExternalInventorySystem inventorySystem;
     private Printer printer;
-    private DiscountDatabase discount;
     private Sale sale;
 
     /**
      * Instances for controller
      */
-    public Controller(ExternalAccountingSystem accountingSystem, ExternalInventorySystem inventorySystem, Printer printer,DiscountDatabase discount) {
+    public Controller(ExternalAccountingSystem accountingSystem, ExternalInventorySystem inventorySystem, Printer printer) {
         this.accountingSystem = accountingSystem;
         this.inventorySystem = inventorySystem;
         this.printer = printer;
-        this.discount = discount;
     }
 
     /**
@@ -35,10 +31,15 @@ public class Controller {
      * Add item to this sale with the quantity
      * @throws ItemIDNotFoundException 
      * */
-    public void addItem(int quantity, String itemID) throws ItemIDNotFoundException{
+    public ItemDTO addItem(int quantity, String itemID) throws ItemIDNotFoundException, DataBaseNotFoundException{
+        
+        if(itemID == "dead_server"){
+            throw new DataBaseNotFoundException();
+        }
+        
         ItemDTO item = inventorySystem.getItem(itemID);
         this.sale.addToSale(item, quantity);
-        printer.printItem(item, sale.getRunningTotal());
+        return item;
     }
 
     /**
@@ -47,13 +48,18 @@ public class Controller {
      * Sending info to Printer
      * Asks for payment
      */
-    public void endSale(){
+    public void sendToExternalSystems(){
         inventorySystem.updateInventory(sale.getQuantities());
         accountingSystem.sendToAccounting(sale.getQuantities());
-        printer.printEnd(sale.getRunningTotal());
-        Scanner in = new Scanner(System.in);
-        printer.printChange(getChange(in.nextFloat(), sale.getRunningTotal()));
         //printer.printReciept(sale.getItems(), sale.getTime(), sale.getRunningTotal());
+    }
+
+    public float pay(float cash){
+        return sale.getChange(cash);
+    }
+
+    public float getRunningTotal(){
+        return sale.getRunningTotal();
     }
 
     /* 
@@ -64,9 +70,7 @@ public class Controller {
     /**
      * Calculating change
      */
-    private float getChange(float cash, float total){
-        return cash - total;
-    }
+    
 
 
 

@@ -37,6 +37,10 @@ public class Sale {
         return quantities;
     }
 
+    public float getChange(float cash){
+        return cash - this.runningTotal;
+    }
+
     /**
      * Get local time for start of sale
      */
