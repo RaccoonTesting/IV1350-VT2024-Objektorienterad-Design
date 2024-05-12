@@ -60,9 +60,11 @@ public class Controller {
         sale.notifyObservers();
     }
 
-    public float pay(float cash){
-        return sale.getChange(cash);
-    }
+    public void pay(float cash){
+        sale.getChange(cash);
+        printer.printReciept(sale);
+        }
+
 
     public float getRunningTotal(){
         return sale.getRunningTotal();
@@ -70,6 +72,7 @@ public class Controller {
     public void addTotalRevenueObserver(TotalRevenueObserver observerToGetAdded) {
         totalRevenueObservers.add(observerToGetAdded);
     }
+
 
 
     /* 

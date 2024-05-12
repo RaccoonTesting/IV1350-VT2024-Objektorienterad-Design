@@ -1,16 +1,14 @@
 package main.se.kth.iv1350.Model;
 import main.se.kth.iv1350.Integration.ItemDTO;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class Sale {
     private float runningTotal;
     private HashMap<ItemDTO, Integer> quantities;
     private LocalDateTime time;
-    private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
+    private float paid;
 
     public Sale(){
         this.runningTotal = 0;
@@ -41,6 +39,7 @@ public class Sale {
     }
 
     public float getChange(float cash){
+        this.paid = cash;
         return cash - this.runningTotal;
     }
 
@@ -51,22 +50,18 @@ public class Sale {
         return this.time;
     }
 
-    /**
-     * Responsible for calling every observer.
-     */
-    public void notifyObservers() {
-        for (TotalRevenueObserver obs: totalRevenueObservers) {
-            obs.newPaymentRevenue(runningTotal);
-        }
+    @Override
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder("---------------------------------\n");
+        stringBuilder.append("Time of sale: " + this.getTime() + "\n");
+        for(ItemDTO item : quantities.keySet()) 
+            stringBuilder.append(quantities.get(item) + " st\n" + item.toString() + "\n\n");
+        stringBuilder.append("Total cost(including VAT): " + getRunningTotal() + "\n");
+        stringBuilder.append("Paid by customer: " + this.paid + " SEK\n");
+        stringBuilder.append("Change to customer: " + getChange(paid) + " SEK\n");
+        stringBuilder.append("---------------------------------\n");
+        return stringBuilder.toString();
     }
 
-    /**
-     * Adds every observer to the observer list in this class.
-     *
-     * @param observersToGetAdded The specified observers to get added.
-     */
-    public void addAlltotalRevenueObservers(List<TotalRevenueObserver> observersToGetAdded) {
-        totalRevenueObservers.addAll(observersToGetAdded);
-
-    }
+    
 }
