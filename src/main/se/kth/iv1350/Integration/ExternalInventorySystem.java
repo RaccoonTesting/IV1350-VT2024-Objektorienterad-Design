@@ -12,7 +12,7 @@ public class ExternalInventorySystem {
     /**
      *  Scans in text file with items that are in the "database"
      *  Parsing the all the items and information into the Item DTO creating an Array list with all items
-     *  Also creates a Hash map for the Inventory
+     *  Creates a Hash map for the Inventory
     */
     public ExternalInventorySystem() {
         try {
@@ -47,7 +47,6 @@ public class ExternalInventorySystem {
     }
 
 
-
     /**
      * Get item information from external inventory system with Item ID
      * Returns current item
@@ -66,12 +65,4 @@ public class ExternalInventorySystem {
         
     }
 }
-    /*
-    public static void main(String args[]) {
-        ExternalInventorySystem ex = new ExternalInventorySystem();
-        ItemDTO item = ex.getItem("5");
-        System.out.println(item);
-        //System.out.println(ex.getItem("0").getName());
 
-    }
-     */

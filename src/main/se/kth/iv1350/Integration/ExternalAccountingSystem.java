@@ -6,7 +6,7 @@ public class ExternalAccountingSystem {
     public ExternalAccountingSystem(){}
 
     /**
-     * Receives information on sale, sends to accounting
+     * Receives information in the form of a hashmap, sends to accounting
      */
     public void sendToAccounting(HashMap<ItemDTO, Integer> sale){
     }

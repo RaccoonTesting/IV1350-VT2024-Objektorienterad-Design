@@ -16,8 +16,12 @@ public class Controller {
     private Sale sale;
     private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
     private ErrorLogger errorLogger;
+
     /**
      * Instances for controller
+     * @param accountingSystem sets instance of accounting system
+     * @param inventorySystem sets instance of inventory system
+     * @param printer sets instance of printer
      */
     public Controller(ExternalAccountingSystem accountingSystem, ExternalInventorySystem inventorySystem, Printer printer, ErrorLogger errorLogger) {
         this.accountingSystem = accountingSystem;
@@ -28,6 +32,7 @@ public class Controller {
 
     /**
      *  New sale is started
+     *  Sets Observer to this sale
      */
     public void startSale() {
         this.sale = new Sale();
@@ -73,7 +78,7 @@ public class Controller {
      * Updating inventory system
      * Sends information to Accounting system
      * Sending info to Printer
-     * Asks for payment
+     * Notify observer
      */
     public void sendToExternalSystems(){
         inventorySystem.updateInventory(sale.getQuantities());
@@ -81,32 +86,25 @@ public class Controller {
         sale.notifyObservers();
     }
 
+    /**
+     * @param cash is input and a call to the getChange is made
+     * Printer prints recipt with the sales information
+     */
     public void pay(float cash){
         sale.getChange(cash);
         printer.printReciept(sale);
         }
 
-
+    /**
+     *
+     * @return getRunningTotal from the current sale
+     */
     public float getRunningTotal(){
         return sale.getRunningTotal();
     }
     public void addTotalRevenueObserver(TotalRevenueObserver observerToGetAdded) {
         totalRevenueObservers.add(observerToGetAdded);
     }
-
-
-
-    /* 
-    public float getDiscount(int customerId){
-        return discount.getDiscount(customerId, sale);
-    }*/
-
-    /**
-     * Calculating change
-     */
-    
-
-
 
 
 

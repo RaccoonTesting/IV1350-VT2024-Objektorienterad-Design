@@ -1,6 +1,6 @@
-package main.se.kth.iv1350.View;
+package test.se.kth.iv1350.View;
 
-import main.se.kth.iv1350.Model.TotalRevenueObserver;
+import test.se.kth.iv1350.Model.TotalRevenueObserver;
 
 /**
  * Responsible for showing the total revenue to the user interface.

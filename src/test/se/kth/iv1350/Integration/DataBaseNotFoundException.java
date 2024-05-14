@@ -1,4 +1,4 @@
-package main.se.kth.iv1350.Integration;
+package test.se.kth.iv1350.Integration;
 
 public class DataBaseNotFoundException extends Exception {
     /**
@@ -8,5 +8,5 @@ public class DataBaseNotFoundException extends Exception {
     public DataBaseNotFoundException(){
         super("Data base cannot be reached");
     }
-    
+
 }

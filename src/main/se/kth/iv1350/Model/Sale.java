@@ -13,6 +13,10 @@ public class Sale {
     private float paid;
     private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
 
+    /**
+     * Sets instance for this sale on runningTotal, time
+     * and quantities (a hashmap with the item DTO's connected to the quantity of the items)
+     */
     public Sale(){
         this.runningTotal = 0;
         this.time = LocalDateTime.now();
@@ -20,7 +24,8 @@ public class Sale {
     }
     /**
      *  We get an Item DTO and the quantity from the controller
-     *  Adding the items multiple times to the sale depending on the quantity
+     *  Adding both to the hash map, if item already exists adds quantity accordingly
+     *  updates running total including VAT and quantity
      */
     public void addToSale(ItemDTO item, int quantity){
         Integer currentQuantity = this.quantities.get(item);
@@ -30,29 +35,41 @@ public class Sale {
     }
 
     /**
-     * Returning running total of the sale
+     * @return runningTotal of the sale
      */
     public float getRunningTotal(){
         return runningTotal;
     }
 
-
+    /**
+     *
+     * @return quantities of the specified Item DTO
+     */
     public HashMap<ItemDTO, Integer> getQuantities() {
         return quantities;
     }
 
+    /**
+     *
+     * @param cash is passed in to
+     * @return (cash - this.runningTotal) witch is the change for the customer
+     */
     public float getChange(float cash){
         this.paid = cash;
         return cash - this.runningTotal;
     }
 
     /**
-     * Get local time for start of sale
+     * @return this.time To get local time for start of sale
      */
     public LocalDateTime getTime(){
         return this.time;
     }
 
+    /**
+     *
+     * @return stringBuilder.toString() to get all information from the hashmap ItemDTO + quantity in a pretty way
+     */
     @Override
     public String toString(){
         StringBuilder stringBuilder = new StringBuilder("---------------------------------\n");
@@ -68,7 +85,7 @@ public class Sale {
 
     
     /**
-     * Responsible for calling every observer.
+     * Responsible for calling observer.
      */
     public void notifyObservers() {
         for (TotalRevenueObserver obs: totalRevenueObservers) {
@@ -78,7 +95,6 @@ public class Sale {
 
     /**
      * Adds every observer to the observer list in this class.
-     *
      * @param observersToGetAdded The specified observers to get added.
      */
     public void addAlltotalRevenueObservers(List<TotalRevenueObserver> observersToGetAdded) {
