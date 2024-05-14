@@ -41,6 +41,9 @@ public class ItemDTO {
         return this.description;
     }
 
+    /**
+     * @return a formated string of all the information that is contained in the Item DTO
+     */
     @Override
     public String toString(){
         return "Item ID: " + this.getItemID() + "\nItem name: " + this.getName() + "\nItem cost: " + this.getPrice() + " SEK\nVat: " + this.getVAT() + " %\nItem description: " + this.getDescription();

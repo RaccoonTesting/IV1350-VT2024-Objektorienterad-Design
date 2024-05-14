@@ -13,7 +13,6 @@ public class TotalRevenueView implements TotalRevenueObserver {
     }
     /**
      * Adds the specified amount to the total revenue printout.
-     *
      * @param amount The total price for the revenue.
      */
     @Override
