@@ -13,6 +13,7 @@ public class Controller {
     private Printer printer;
     private Sale sale;
     private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
+
     /**
      * Instances for controller
      * @param accountingSystem sets instance of accounting system
@@ -88,11 +89,6 @@ public class Controller {
     public void addTotalRevenueObserver(TotalRevenueObserver observerToGetAdded) {
         totalRevenueObservers.add(observerToGetAdded);
     }
-
-
-    
-
-
 
 
 

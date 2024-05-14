@@ -1,36 +1,14 @@
 package test.se.kth.iv1350.Integration;
+import test.se.kth.iv1350.Model.Sale;
 
 public class Printer {
-    private String reciept;
-
     public Printer(){
+    }
+    /**
+     * @param sale is passed and prints the output from sale.toString
+     */
+    public void printReciept(Sale sale){
+        System.out.println(sale.toString());
 
     }
-    /* Print DTO for each item added
-     */
-    public void printItem(ItemDTO item, float total){
-        System.out.println("Item ID: " + item.getItemID());
-        System.out.println("Item name: " + item.getName());
-        System.out.println("Item cost: " + item.getPrice() + " SEK");
-        System.out.println("Vat: " + item.getVAT() + " %");
-        System.out.println("Item description: " + item.getDescription());
-        System.out.println("total: " + total + " SEK");
-    }
-
-    /*Printing total cost
-     */
-    public void printEnd(float total){
-        System.out.println("End sale");
-        System.out.println("Total cost(including VAT): " + total + " SEK");
-    }
-
-    /*Prints change that should be given to the customer
-     */
-    public void printChange(float change){
-        System.out.println("Change to customer: " + change + " SEK");
-    }
-
-    /*public void printReciept()
-
-     */
 }
