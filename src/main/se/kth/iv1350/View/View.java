@@ -17,7 +17,6 @@ public class View {
             System.out.println("Use [start] to start new sale");
             System.out.println("Use [scan quantity itemID] to scan an item");
             System.out.println("Use [end] to end the sale and go to payment");
-            controller.addTotalRevenueObserver(new TotalRevenueView());
 
             while(true) takeInput();
         }

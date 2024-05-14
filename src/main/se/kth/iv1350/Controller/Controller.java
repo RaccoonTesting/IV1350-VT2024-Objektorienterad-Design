@@ -1,8 +1,10 @@
 package main.se.kth.iv1350.Controller;
 
 import main.se.kth.iv1350.Model.*;
+import main.se.kth.iv1350.Util.ErrorLogger;
 import main.se.kth.iv1350.Integration.*;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,13 +15,15 @@ public class Controller {
     private Printer printer;
     private Sale sale;
     private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
+    private ErrorLogger errorLogger;
     /**
      * Instances for controller
      */
-    public Controller(ExternalAccountingSystem accountingSystem, ExternalInventorySystem inventorySystem, Printer printer) {
+    public Controller(ExternalAccountingSystem accountingSystem, ExternalInventorySystem inventorySystem, Printer printer, ErrorLogger errorLogger) {
         this.accountingSystem = accountingSystem;
         this.inventorySystem = inventorySystem;
         this.printer = printer;
+        this.errorLogger = errorLogger;
     }
 
     /**
@@ -44,10 +48,23 @@ public class Controller {
             return item;
         } catch (ItemIDNotFoundException e) {
             // TODO Auto-generated catch block
+            try {
+                errorLogger.log(e);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
             throw e;
         } catch (DataBaseNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            try {
+                errorLogger.log(e);
+            } catch (IOException e1) {
+                // TODO Auto-generated catch block
+                System.out.println("reeee2");
+                e1.printStackTrace();
+            }
             throw e;
         }
     }
@@ -61,7 +78,6 @@ public class Controller {
     public void sendToExternalSystems(){
         inventorySystem.updateInventory(sale.getQuantities());
         accountingSystem.sendToAccounting(sale.getQuantities());
-        //printer.printReciept(sale.getItems(), sale.getTime(), sale.getRunningTotal());
         sale.notifyObservers();
     }
 

@@ -1,7 +1,12 @@
 package main.se.kth.iv1350.Startup;
 
+import java.io.IOException;
+
 import main.se.kth.iv1350.Controller.Controller;
 import main.se.kth.iv1350.Integration.*;
+import main.se.kth.iv1350.Util.ErrorLogger;
+import main.se.kth.iv1350.Util.RevenueLogger;
+import main.se.kth.iv1350.View.TotalRevenueView;
 import main.se.kth.iv1350.View.View;
 
 
@@ -15,7 +20,17 @@ public class Main {
         ExternalAccountingSystem accountingSystem = new ExternalAccountingSystem();
         ExternalInventorySystem inventorySystem = new ExternalInventorySystem();
         Printer printer = new Printer();
-        Controller controller = new Controller(accountingSystem, inventorySystem, printer);
+        ErrorLogger errorLogger = new ErrorLogger();
+        Controller controller = new Controller(accountingSystem, inventorySystem, printer, errorLogger);
+        try {
+            RevenueLogger revenueLogger = new RevenueLogger();
+            controller.addTotalRevenueObserver(revenueLogger);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println("nähä");
+            e.printStackTrace();
+        }
+        controller.addTotalRevenueObserver(new TotalRevenueView());
         View view = new View(controller);
        
     }
