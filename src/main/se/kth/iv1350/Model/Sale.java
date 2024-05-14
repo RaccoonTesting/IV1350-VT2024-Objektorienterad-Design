@@ -1,7 +1,9 @@
 package main.se.kth.iv1350.Model;
 import main.se.kth.iv1350.Integration.ItemDTO;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class Sale {
@@ -9,6 +11,7 @@ public class Sale {
     private HashMap<ItemDTO, Integer> quantities;
     private LocalDateTime time;
     private float paid;
+    private List<TotalRevenueObserver> totalRevenueObservers = new ArrayList<TotalRevenueObserver>();
 
     public Sale(){
         this.runningTotal = 0;
@@ -64,4 +67,22 @@ public class Sale {
     }
 
     
+    /**
+     * Responsible for calling every observer.
+     */
+    public void notifyObservers() {
+        for (TotalRevenueObserver obs: totalRevenueObservers) {
+            obs.newPaymentRevenue(runningTotal);
+        }
+    }
+
+    /**
+     * Adds every observer to the observer list in this class.
+     *
+     * @param observersToGetAdded The specified observers to get added.
+     */
+    public void addAlltotalRevenueObservers(List<TotalRevenueObserver> observersToGetAdded) {
+        totalRevenueObservers.addAll(observersToGetAdded);
+
+    }
 }

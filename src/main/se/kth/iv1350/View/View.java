@@ -3,17 +3,22 @@ package main.se.kth.iv1350.View;
 import java.util.Scanner;
 
 import main.se.kth.iv1350.Controller.Controller;
+import main.se.kth.iv1350.Integration.DataBaseNotFoundException;
 import main.se.kth.iv1350.Integration.ItemDTO;
+import main.se.kth.iv1350.Integration.ItemIDNotFoundException;
 
 public class View {
       Controller controller;
       Scanner in = new Scanner(System.in);
+
         public View(Controller controller){
             this.controller = controller;
             System.out.println("Welcome to Daniel and Johannas Store!");
             System.out.println("Use [start] to start new sale");
             System.out.println("Use [scan quantity itemID] to scan an item");
             System.out.println("Use [end] to end the sale and go to payment");
+            controller.addTotalRevenueObserver(new TotalRevenueView());
+
             while(true) takeInput();
         }
 
@@ -43,9 +48,11 @@ public class View {
                 ItemDTO item = controller.addItem(quantity, itemID);
                 System.out.println(item.toString());
                 System.out.println("Total: " + controller.getRunningTotal());
-            } catch (Exception e) {
+            } catch (ItemIDNotFoundException e) {
                 System.out.println(e.getMessage());
                 // TODO: handle exception
+            } catch (DataBaseNotFoundException e){
+                System.out.println("Internal error");
             }
         }
 
