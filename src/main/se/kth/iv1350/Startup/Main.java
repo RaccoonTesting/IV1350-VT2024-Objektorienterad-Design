@@ -32,6 +32,7 @@ public class Main {
         }
         controller.addTotalRevenueObserver(new TotalRevenueView());
         View view = new View(controller);
+        view.takeInput();
        
     }
 }

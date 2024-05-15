@@ -13,33 +13,33 @@ public class View {
 
         public View(Controller controller){
             this.controller = controller;
+
+        }
+
+        public void takeInput(){
             System.out.println("Welcome to Daniel and Johannas Store!");
             System.out.println("Use [start] to start new sale");
             System.out.println("Use [scan quantity itemID] to scan an item");
             System.out.println("Use [end] to end the sale and go to payment");
-
-            while(true) takeInput();
-        }
-
-        private void takeInput(){
-            String input[] = in.nextLine().split(" ");
-            switch (input[0]) {
-                case "start":
-                    controller.startSale();
-                    System.out.println("Sale started");
-                    break;
+            while (true) {
+                String input[] = in.nextLine().split(" ");
+                switch (input[0]) {
+                    case "start":
+                        controller.startSale();
+                        System.out.println("Sale started");
+                        break;
                 
-                case "scan":
-                    scanItem(Integer.parseInt(input[1]), input[2]);
-                    break;    
+                    case "scan":
+                        scanItem(Integer.parseInt(input[1]), input[2]);
+                        break;    
                 
-                case "end":
-                    endSale();
-                    break;
-                default:
-                    break;
+                    case "end":
+                        endSale();
+                        break;
+                    default:
+                        break;
+                }
             }
-            
         }
 
         private void scanItem(int quantity, String itemID){

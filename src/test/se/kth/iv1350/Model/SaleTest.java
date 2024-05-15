@@ -2,8 +2,8 @@ package test.se.kth.iv1350.Model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.jupiter.api.AfterEach;
 
@@ -27,7 +27,7 @@ public class SaleTest {
 
     @Test
     void testEmptyGetItems() {
-        ArrayList<ItemDTO> list = sale.getItems();
+        Set<ItemDTO> list = sale.getQuantities().keySet();
         assertTrue(list.isEmpty());
     }
 
@@ -44,9 +44,9 @@ public class SaleTest {
         sale.addToSale(item, 1);
         float exTotal = (float)(5.0 * 1.25);
         assertEquals(exTotal, sale.getRunningTotal(), 0.0001);
-        ArrayList<ItemDTO> exItemDTOs = new ArrayList<>();
+        Set<ItemDTO> exItemDTOs = new HashSet<ItemDTO>();
         exItemDTOs.add(item);
-        assertEquals(exItemDTOs, sale.getItems());
+        assertEquals(exItemDTOs, sale.getQuantities().keySet());
     }
 
     @Test
@@ -55,9 +55,9 @@ public class SaleTest {
         sale.addToSale(item, 3);
         float exTotal = (float)(5.0 * 1.25 * 3);
         assertEquals(exTotal, sale.getRunningTotal(), 0.0001);
-        ArrayList<ItemDTO> exItemDTOs = new ArrayList<>();
+        Set<ItemDTO> exItemDTOs = new HashSet<ItemDTO>();
         for(int i = 0; i < 3; i++)exItemDTOs.add(item);
-        assertEquals(exItemDTOs, sale.getItems());
+        assertEquals(exItemDTOs, sale.getQuantities().keySet());
     }
 
     @Test
@@ -70,10 +70,10 @@ public class SaleTest {
         sale.addToSale(item3, 1);
         float exTotal = (float)(5.0 * 1.25  + 10.0 * 1.25 + 20.0 * 1.25);
         assertEquals(exTotal, sale.getRunningTotal(), 0.0001);
-        ArrayList<ItemDTO> exItemDTOs = new ArrayList<>();
+        Set<ItemDTO> exItemDTOs = new HashSet<ItemDTO>();
         exItemDTOs.add(item1);
         exItemDTOs.add(item2);
         exItemDTOs.add(item3);
-        assertEquals(exItemDTOs, sale.getItems());
+        assertEquals(exItemDTOs, sale.getQuantities().keySet());
     }
 }
