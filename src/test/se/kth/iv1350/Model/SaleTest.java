@@ -10,7 +10,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import test.se.kth.iv1350.Integration.ItemDTO;
+import main.se.kth.iv1350.Integration.ItemDTO;
+import main.se.kth.iv1350.Model.Sale;
 
 public class SaleTest {
     private Sale sale = null;

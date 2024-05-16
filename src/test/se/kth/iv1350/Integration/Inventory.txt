@@ -1,9 +1,0 @@
-0,Orange,4.3,10,nice vegetables
-1,Eggs,4.9,11,nice vegetables
-2,Chicken,55.0,9,nice vegetables
-3,Coffee,33,1,nice vegetables
-4,Juice,2.2,5,nice vegetables
-5,Salad,8.3,2,nice vegetables
-6,Tomato,2.3,5,nice vegetables
-7,Artichoke,6.4,8,nice vegetables
-8,Eggplant,4.2,7,nice vegetables
