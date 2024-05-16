@@ -42,7 +42,7 @@ public class View {
             }
         }
 
-        private void scanItem(int quantity, String itemID){
+        public void scanItem(int quantity, String itemID){
             try {
                 ItemDTO item = controller.addItem(quantity, itemID);
                 System.out.println(item.toString());
