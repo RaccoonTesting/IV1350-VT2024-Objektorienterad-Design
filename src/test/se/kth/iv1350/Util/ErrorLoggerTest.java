@@ -65,7 +65,7 @@ public class ErrorLoggerTest {
         while(scanner.hasNext()){
             lines.add(scanner.nextLine());
         }
-        assertEquals("Data base cannot be reached", lines.get(lines.size()));
+        assertEquals("Data base cannot be reached", lines.get(lines.size() -1));
     }
 
 
