@@ -23,7 +23,7 @@ public class ErrorLogger {
 
     public void log(Exception error) throws IOException{
         this.logTime = LocalDateTime.now();
-        fileWriter.write(logTime + "\n" + error.getMessage() + "\n\n");
+        fileWriter.write(logTime + "\n" + error.getMessage() + "\n" + error.getStackTrace() + "\n\n");
         fileWriter.flush();
     }
 }

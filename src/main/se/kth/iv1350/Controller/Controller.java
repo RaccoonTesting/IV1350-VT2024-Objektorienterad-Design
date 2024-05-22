@@ -67,7 +67,6 @@ public class Controller {
                 errorLogger.log(e);
             } catch (IOException e1) {
                 // TODO Auto-generated catch block
-                System.out.println("reeee2");
                 e1.printStackTrace();
             }
             throw e;
@@ -83,7 +82,6 @@ public class Controller {
     public void sendToExternalSystems(){
         inventorySystem.updateInventory(sale.getQuantities());
         accountingSystem.sendToAccounting(sale.getQuantities());
-        sale.notifyObservers();
     }
 
     /**

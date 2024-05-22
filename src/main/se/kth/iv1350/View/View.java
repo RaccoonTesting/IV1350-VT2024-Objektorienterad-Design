@@ -48,7 +48,7 @@ public class View {
                 System.out.println(item.toString());
                 System.out.println("Total: " + controller.getRunningTotal());
             } catch (ItemIDNotFoundException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Could not find item with id: " + itemID);
                 // TODO: handle exception
             } catch (DataBaseNotFoundException e){
                 System.out.println("Internal error");

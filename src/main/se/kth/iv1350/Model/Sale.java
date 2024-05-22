@@ -56,6 +56,7 @@ public class Sale {
      */
     public float getChange(float cash){
         this.paid = cash;
+        notifyObservers();
         return cash - this.runningTotal;
     }
 
@@ -87,7 +88,7 @@ public class Sale {
     /**
      * Responsible for calling observer.
      */
-    public void notifyObservers() {
+    private void notifyObservers() {
         for (TotalRevenueObserver obs: totalRevenueObservers) {
             obs.newPaymentRevenue(runningTotal);
         }
