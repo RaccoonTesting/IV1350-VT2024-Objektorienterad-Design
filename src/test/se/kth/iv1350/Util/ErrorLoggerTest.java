@@ -1,6 +1,7 @@
 package test.se.kth.iv1350.Util;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,9 +17,11 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 
 import main.se.kth.iv1350.Controller.Controller;
+import main.se.kth.iv1350.Integration.DataBaseNotFoundException;
 import main.se.kth.iv1350.Integration.ExternalAccountingSystem;
 import main.se.kth.iv1350.Integration.ExternalInventorySystem;
 import main.se.kth.iv1350.Integration.ItemDTO;
+import main.se.kth.iv1350.Integration.ItemIDNotFoundException;
 import main.se.kth.iv1350.Integration.Printer;
 import main.se.kth.iv1350.Util.ErrorLogger;
 import main.se.kth.iv1350.Util.RevenueLogger;
@@ -57,29 +60,23 @@ public class ErrorLoggerTest {
     @Test
     void testDataBaseNotFoundException() {
         controller.startSale();
-        try {
-            ItemDTO item = controller.addItem(2, "dead_server");
-        } catch (Exception e) {
-        }
         lines = new ArrayList<String>();
         while(scanner.hasNext()){
             lines.add(scanner.nextLine());
         }
-        assertEquals("Data base cannot be reached", lines.get(lines.size() -1));
+        assertThrows(DataBaseNotFoundException.class, () -> controller.addItem(2, "dead_server"));
+        assertEquals("Data base cannot be reached", lines.get(lines.size() -78));
     }
 
 
     @Test
     void testItemNotFoundException() {
         controller.startSale();
-        try {
-            ItemDTO item = controller.addItem(2, "22");
-        } catch (Exception e) {
-        }
         lines = new ArrayList<String>();
         while(scanner.hasNext()){
             lines.add(scanner.nextLine());
         }
-        assertEquals("No item found with ID: 22", lines.get(lines.size() - 1));
+        assertThrows(ItemIDNotFoundException.class, () -> controller.addItem(1, "22"));
+        assertEquals("No item found with ID: 22", lines.get(lines.size() - 78));
     }
 }
